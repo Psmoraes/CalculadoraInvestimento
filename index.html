@@ -63,12 +63,13 @@
                 </div>
                 <div class="form-group">
                     <label for="lblJuros">Juros</label>
+                    <script>var periodojuros=0;</script>
                     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-secondary">Mensal</button>
-                      <button type="button" class="btn btn-secondary">Bimestral</button>
-                      <button type="button" class="btn btn-secondary">Trimestral</button>
-                      <button type="button" class="btn btn-secondary">Semestral</button>
-                      <button type="button" class="btn btn-secondary ">Anual</button>
+                      <button onclick="periodojuros=1;"style="background-color: #a6a6a6;" type="button" class="btn btn-secondary">Mensal</button>
+                      <button onclick="periodojuros=2;" type="button" class="btn btn-secondary">Bimestral</button>
+                      <button onclick="periodojuros=3;" type="button" class="btn btn-secondary">Trimestral</button>
+                      <button onclick="periodojuros=6;" type="button" class="btn btn-secondary">Semestral</button>
+                      <button onclick="periodojuros=12;" type="button" class="btn btn-secondary ">Anual</button>
                     </div>
                     <input type="text" id="juros"class="form-control"placeholder="Digite o valor de seu juros"/>
                 </div>
@@ -89,16 +90,16 @@
                 
                 </script>
                 //-->
-                <button onclick="calculaResultado()" class="btn btn-primary">Confirmar</button>
+                <button onclick="calculaResultado(periodojuros)" class="btn btn-primary">Confirmar</button>
                 <script type="text/javascript">
-                    function calculaResultado() {
+                    function calculaResultado(periodojuros) {
                         console.log(document.getElementById('capital').value);
                         console.log(document.getElementById('deposito').value);
                         console.log(document.getElementById('juros').value);
                         console.log(document.getElementById('meses').value);
                         var cap = document.getElementById('capital').value;
                         var dep = document.getElementById('deposito').value;
-                        var jur = document.getElementById('juros').value;
+                        var jur = Math.pow(document.getElementById('juros').value,1/periodojuros);
                         var mes = document.getElementById('meses').value;
                         var res = 0;
                         var res = (cap*Math.pow((jur),mes))+(dep*(Math.pow((jur),mes)-1)/(jur-1))
