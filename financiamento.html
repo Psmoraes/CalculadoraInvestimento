@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora Financimento</title>
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #f5f5f0;">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Investimento</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        
+        <div class="container">
+            <div class="box">
+                <div class="form-group">
+                    <label for="lblCapital">Montante Inicial</label>
+                    
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                    <input type="text" id="capital"class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Digite seu capital inicial"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lblParcelas">Parcelas Mensais</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                        </div>
+                    <input type="text" id="parcela"class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Digite o valor de suas parcelas" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lblJuros">Juros</label>
+                    <script>var periodojuros=0;</script>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                      <button onclick="periodojuros=1;"style="background-color: #a6a6a6;" type="button" class="btn btn-secondary">Mensal</button>
+                      <button onclick="periodojuros=2;" type="button" class="btn btn-secondary">Bimestral</button>
+                      <button onclick="periodojuros=3;" type="button" class="btn btn-secondary">Trimestral</button>
+                      <button onclick="periodojuros=6;" type="button" class="btn btn-secondary">Semestral</button>
+                      <button onclick="periodojuros=12;" type="button" class="btn btn-secondary ">Anual</button>
+                    </div>
+                    <input type="text" id="juros"class="form-control"placeholder="Digite o valor de seu juros"/>
+                </div>
+                <div class="form-group">
+                    <label for="lblMeses">Meses</label>
+                    <input type="text" id="meses"class="form-control"placeholder="Digite a qtd de meses"/>
+                </div>
+                <div class="form-group">
+                    <label for="lblResultado">Resultado</label>
+                    <input type="text" class="form-control" id="resultado"aria-label="Amount (to the nearest dollar)" readonly/>
+                </div>
+                <!--
+                <script>
+                console.log(document.getElementById('capital').value);
+                console.log(document.getElementById('parcela').value);
+                console.log(document.getElementById('juros').value);
+                console.log(document.getElementById('meses').value);
+                
+                </script>
+                //-->
+                <button onclick="calculaResultado(periodojuros)" class="btn btn-primary">Confirmar</button>
+                <script type="text/javascript">
+                    function calculaResultado(periodojuros) {
+                        console.log(document.getElementById('capital').value);
+                        console.log(document.getElementById('parcela').value);
+                        console.log(document.getElementById('juros').value);
+                        console.log(document.getElementById('meses').value);
+                        var cap = document.getElementById('capital').value;
+                        var dep = document.getElementById('parcela').value;
+                        var jur = Math.pow(document.getElementById('juros').value,1/periodojuros);
+                        var mes = document.getElementById('meses').value;
+                        var res = 0;
+                        var res = (cap*Math.pow((jur),mes))-dep;
+                        console.log(res);
+                        document.getElementById('resultado').value = res;
+                    }
+                </script>
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
